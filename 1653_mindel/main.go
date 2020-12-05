@@ -22,7 +22,7 @@ func minimumDeletions(s string) int {
 	aLeft, bLeft := 0, 0
 	aRight, bRight := total["a"], total["b"]
 	best := bLeft + aRight
-	initBest := best
+
 	for _, v := range s {
 		inLoop = true
 		if string(v) == "a" {
@@ -34,12 +34,10 @@ func minimumDeletions(s string) int {
 		}
 		best = min(best, bLeft+aRight)
 	}
-	if inLoop && initBest != best {
+	if inLoop && best >= 1 {
 		return best
 	}
-	if initBest >= 1 {
-		return best
-	}
+
 	return 0
 }
 
